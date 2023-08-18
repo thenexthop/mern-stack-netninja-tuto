@@ -1,60 +1,30 @@
 import { Router } from 'express';
 
+// Controller
+import { 
+  createWorkout, 
+  getAllWorkouts,
+  getWorkout,
+  deleteWorkout,
+  updateWorkout
+ } from '../controllers/workout.controller.js';
 
 const router = Router();
 
 // GET All
-router.get('/', (req, res) => {
-  return res.status(200).json({
-    msg: "Obtener TODOS los Workouts!",
-  });
-});
+router.get('/', getAllWorkouts);
 
 // GET one
-router.get('/:id', (req, res) => {
-  const {id} = req.params;
-
-  if (!id) {
-    return res.status(401).json({
-      error: "No se ha indicado el Id del Workout.",
-    });
-  }
-
-  return res.status(200).json({
-    msg: `Retorna el Workout cuyo Id sea ${id}.`,
-  });
-
-});
+router.get('/:id', getWorkout);
 
 // POST new Workout
-router.post('/', (req, res) => {
-  return res.status(200).json({
-    msg: "Crea un NUEVO Workout en la BDatos...",
-  });
-});
+router.post('/', createWorkout);
 
-// GET one
-router.patch('/:id', (req, res) => {
-  const {id} = req.params;
-
-  if (!id) {
-    return res.status(401).json({
-      error: "No se ha indicado el Id del Workout.",
-    });
-  }
-
-  return res.status(200).json({
-    msg: `Actualiza el Workout cuyo Id sea ${id}.`,
-  });
-  
-});
+// PATCH update a specific workout
+router.patch('/:id', updateWorkout);
 
 // DELETE delete Workout from DB
-router.delete('/:id', (req, res) => {
-  return res.status(200).json({
-    msg: "Elimina el Workout con el Id indicado de la BDatos...",
-  });
-});
+router.delete('/:id', deleteWorkout);
 
 
 export default router;
