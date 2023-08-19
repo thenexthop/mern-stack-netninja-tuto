@@ -62,3 +62,39 @@ h1 {
   max-width: var(--max-width);
   padding: 20px;
 }
+
+.home {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 100px;
+}
+
+.workout-details {
+  background-color: #ffffff;
+  border-radius: .4rem;
+  margin: 20px auto;
+  padding: 20px;
+  box-shadow: 2px 2px 5px rgba(0,0,0,.05);
+  position: relative;
+}
+
+.workout-details h4 {
+  color: var(--primary);
+  font-size: 1.2em;
+  margin: 0 0 10px 0;
+}
+
+.workout-details p {
+  color: #555555;
+  font-size: 0.9em;
+  margin: 0;
+}
+
+.workout-details span {
+  color: #555555;
+  font-size: 0.9em;
+  margin: 0;
+
+  position: absolute;
+  
+}
