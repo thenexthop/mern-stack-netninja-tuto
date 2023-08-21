@@ -1,9 +1,13 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
+// Global Context provider
+import { WorkoutsContextProvider } from './context/WorkoutsContext';
+
 // Layouts
 import Main from './layouts/Main';
 
 // Pages
+//import HomeV1 from './pages/HomeV1/HomeV1';
 import Home from './pages/Home';
 
 const router = createBrowserRouter([
@@ -15,6 +19,10 @@ const router = createBrowserRouter([
         index: true,
         element: <Home />,
       },
+      // {
+      //   index: true,
+      //   element: <HomeV1 />,
+      // },
     ]
   },  
 ]);
@@ -22,7 +30,9 @@ const router = createBrowserRouter([
 function App() {  
   return (
     <div className="app">
-      <RouterProvider router={router} />
+      <WorkoutsContextProvider>
+        <RouterProvider router={router} />
+      </WorkoutsContextProvider>
     </div>
   )
 }

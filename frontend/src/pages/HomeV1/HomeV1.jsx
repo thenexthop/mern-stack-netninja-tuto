@@ -1,18 +1,19 @@
-import { useEffect } from "react";
-
-// custom hook to manage global app Context
-import { useWorkoutsContext } from "../hooks/useWorkoutsContext";
-
-// Action creators
-import { setAllWorkouts } from '../context/actions/workouts.actions';
+import { useEffect, useState } from "react";
 
 // Components
-import WorkoutDetails from "../components/WorkoutDetails";
-import WorkoutForm from "../components/WorkoutForm";
+import WorkoutDetails from "../../components/WorkoutDetails"
 
-const Home = () => {
-  const { state:{ workouts }, dispatch } = useWorkoutsContext();
-  
+import WorkoutForm from "../../components/WorkoutForm";
+
+// --------------------------------------------
+// Primera versión del componente Home
+// esta usa el hook useState para la lista
+// de workouts. 
+//
+// Se mantiene aquí solo para tenerla de referencia
+const HomeV1 = () => {
+  const [workouts, setWorkouts] = useState(null);
+
   useEffect(()=>{
     const fetchWorkouts = async () => {
       const resp = await fetch("http://localhost:5400/api/workouts");
@@ -21,9 +22,8 @@ const Home = () => {
       if(resp.ok) {
         const { data } = json;
 
-        console.log("data: ", data);
-        dispatch(setAllWorkouts(data));
-        //console.log(workouts);
+        // console.log(data);
+        setWorkouts(data);
       }
     }
 
@@ -48,4 +48,4 @@ const Home = () => {
   )
 }
 
-export default Home;
+export default HomeV1;

@@ -1,11 +1,19 @@
 import { useState } from 'react';
 
+// Global context
+import { useWorkoutsContext } from '../hooks/useWorkoutsContext';
+
+// Action creator
+import { createNewWorkout } from '../context/actions/workouts.actions';
+
 export default function WorkoutForm() {
   const [title, setTitle] = useState("");
   const [reps, setReps] = useState("");
   const [load, setLoad] = useState("");
   const [error, setError] = useState(null);
   
+  const { dispatch } = useWorkoutsContext();
+
   async function onSubmit(e) {
     e.preventDefault();
 
@@ -35,6 +43,7 @@ export default function WorkoutForm() {
     
     if(json.status === "success") {
       console.log("it works!", json);
+      dispatch(createNewWorkout(json.data));
       setError(null)
       setTitle("")
       setLoad("")
