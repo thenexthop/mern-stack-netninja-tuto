@@ -91,10 +91,57 @@ h1 {
 }
 
 .workout-details span {
-  color: #555555;
+  background-color: #f1f1f1;
+  border-radius: 50%;
+  color: #333333;
+  cursor: pointer;
   font-size: 0.9em;
   margin: 0;
-
-  position: absolute;
+  padding: .4rem;
   
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.form > input,
+.form > label {
+  display: block;
+}
+
+.form input {
+  border: 1px solid #ddd;
+  border-radius: .2rem;
+  font-family: inherit;
+  font-size: inherit;
+  margin: .4rem 0 1.25rem;
+  padding: .6rem;
+  width: 100%;
+
+}
+
+.form button {
+  background-color: var(--primary);
+  border: 0;
+  border-radius: .25rem;
+  color: #ffffff;
+  cursor: pointer;
+  font-family: inherit;
+  padding: .6rem;
+
+  display: block;
+  margin: 0 auto;
+}
+
+.error {
+  background-color: #ffefef;
+  border: 1px solid var(--error);
+  border-radius: .25rem;
+  color: var(--error);
+  padding: .6rem;
+  margin: 1.25rem 0;
+}
+
+.form h3 {
+  margin: 1.25rem 0;
 }

@@ -1,12 +1,12 @@
 
-const WorkoutDetails = ({ workout }) => {
+const WorkoutDetails = ({ title, reps, load, createdAt }) => {
   return (
     <>
       <div className="workout-details">
-        <h4>{ workout.title }</h4>
-        <p><strong>Load: </strong>{ workout.load }</p>
-        <p><strong>Reps: </strong>{ workout.reps }</p>
-        <p>{ workout.createdAt }</p>
+        <h4>{ title }</h4>
+        <p><strong>Load: </strong>{ load }</p>
+        <p><strong>Reps: </strong>{ reps }</p>
+        <p>{ createdAt }</p>
       </div>
     </>
   )
