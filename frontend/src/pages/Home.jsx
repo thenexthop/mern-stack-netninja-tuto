@@ -36,6 +36,7 @@ const Home = () => {
       { workouts && workouts.map(workout => (
         <WorkoutDetails 
           key={ workout._id } 
+          id={ workout._id } 
           createdAt={workout.createdAt}
           load={workout.load}
           title={workout.title}

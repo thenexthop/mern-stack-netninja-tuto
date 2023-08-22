@@ -16,6 +16,11 @@ export function workoutsReducer(state, action) {
         ...state,
         workouts: [ action.payload, ...state.workouts ]
       }  
+    case (actionTypes.DELETE_WORKOUT):
+      return {
+        ...state,
+        workouts: state.workouts.filter(w => w._id !== action.payload)
+      }
     default:
       return state;
   }

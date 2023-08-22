@@ -13,3 +13,10 @@ export function createNewWorkout(workout) {
     payload: workout
   }
 }
+
+export function deleteWorkout(id) {
+  return {
+    type: actionTypes.DELETE_WORKOUT,
+    payload: id
+  }
+}
