@@ -133,13 +133,17 @@ h1 {
   margin: 0 auto;
 }
 
-.error {
+div.error {
   background-color: #ffefef;
   border: 1px solid var(--error);
   border-radius: .25rem;
   color: var(--error);
   padding: .6rem;
   margin: 1.25rem 0;
+}
+
+.input.error {
+  border: 1px solid var(--error);
 }
 
 .form h3 {

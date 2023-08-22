@@ -11,6 +11,7 @@ export default function WorkoutForm() {
   const [reps, setReps] = useState("");
   const [load, setLoad] = useState("");
   const [error, setError] = useState(null);
+  const [emptyFields, setEmptyFields] = useState([]);
   
   const { dispatch } = useWorkoutsContext();
 
@@ -38,6 +39,7 @@ export default function WorkoutForm() {
     if(!res.ok){
       console.log(json);
       setError(json.errorMsg);
+      setEmptyFields(json.emptyFields)
       return;
     }
     
@@ -45,6 +47,7 @@ export default function WorkoutForm() {
       console.log("it works!", json);
       dispatch(createNewWorkout(json.data));
       setError(null)
+      setEmptyFields([])
       setTitle("")
       setLoad("")
       setReps("")
@@ -57,14 +60,14 @@ export default function WorkoutForm() {
       <h3>Add new Workout</h3>
       <label>Title: </label>  
       <input 
-        className='input'
+        className={`input${emptyFields.length > 0 && emptyFields.includes("title") ? ' error' : ''}`}
         name="title"
         onChange={(e)=> setTitle(e.target.value)}
         value={title}
       />
       <label>Reps: </label>  
       <input 
-        className='input'
+        className={`input${emptyFields.length > 0 && emptyFields.includes("reps") ? ' error' : ''}`}
         type='number'
         name="reps"
         onChange={(e)=> setReps(e.target.value)}
@@ -72,7 +75,7 @@ export default function WorkoutForm() {
       />
       <label>Load (in Kgs.): </label>  
       <input 
-        className='input'
+        className={`input${emptyFields.length > 0 && emptyFields.includes("load") ? ' error' : ''}`}
         type='number'
         name="load"
         onChange={(e)=> setLoad(e.target.value)}
