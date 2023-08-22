@@ -47,6 +47,27 @@ export const getWorkout = async (req, res) => {
 // create
 export const createWorkout = async (req, res) => {
   const { title, reps, load } = req.body;
+
+  const emptyFields = [];
+
+  if(!title) {
+    emptyFields.push("title")
+  }
+  if(!reps) {
+    emptyFields.push("reps")
+  }
+  if(!load) {
+    emptyFields.push("load")
+  }
+
+  if(emptyFields.length > 0) {
+    return res.status(400).json({
+      status: "fail",
+      errorMsg: "Debe completar todos los campos.",
+      emptyFields
+    })
+  }
+
   try {
     const newWorkout = await Workout.create({title, reps, load})
     return res.status(200).json({
@@ -57,6 +78,7 @@ export const createWorkout = async (req, res) => {
     return res.status(400).json({
       status: "fail",
       errorMsg: error.message,
+      emptyFields,
     })
   }
 }
